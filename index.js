@@ -1,17 +1,35 @@
 import React, { Component } from "react";
 import { View } from "react-native";
+import PropTypes from "prop-types";
+
+const isFunc = fn => "function" === typeof fn;
 
 class Sizer extends Component {
+  static propTypes = {
+    onLayout: PropTypes.func,
+    onUpdate: PropTypes.func,
+  };
   state = {
     measured: false,
     dimensions: {},
   };
   measureLayout = e => {
     const { layout } = e.nativeEvent;
-    this.setState({
-      measured: true,
-      dimensions: { ...layout },
-    });
+    if (isFunc(this.props.onLayout)) this.props.onLayout(e);
+
+    const prevState = this.state;
+
+    this.setState(
+      {
+        measured: true,
+        dimensions: { ...layout },
+      },
+      () => {
+        if (isFunc(this.props.onUpdate)) {
+          this.props.onUpdate(prevState, this.state);
+        }
+      },
+    );
   };
   render() {
     return (

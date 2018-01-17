@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/codedailyio/react-native-size/issues"
   },
-  "homepage": "https://github.com/codedailyio/react-native-size#readme"
+  "homepage": "https://github.com/codedailyio/react-native-size#readme",
+  "devDependencies": {
+    "prop-types": "^15.6.0"
+  }
 }
