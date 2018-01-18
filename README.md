@@ -32,3 +32,5 @@ You can continue to use `onLayout` if necessary and it will receive the original
 
 
 Additionally you can provide an `onUpdate` function that is called after the measurement has taken place and a re-render has ocurred. It receives the previous measurement, as well as the new measurement. This is a great spot to trigger animations.
+
+The `responsive` prop defaults to `true`. When true if the container size changes the component will re-render. Set `responsive={false}` to disable and only measure the first time.

@@ -8,6 +8,7 @@ class Sizer extends Component {
   static propTypes = {
     onLayout: PropTypes.func,
     onUpdate: PropTypes.func,
+    responsive: PropTypes.bool,
   };
   state = {
     measured: false,
@@ -19,6 +20,8 @@ class Sizer extends Component {
 
     const prevState = this.state;
 
+    if (prevState.measured && !this.props.responsive) return;
+    
     this.setState(
       {
         measured: true,
